@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Voiceflow</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #chat-container {
+            width: 90%;
+            height: 90%;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container"></div>
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '66844a8b45de04a0d77d7de9' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production',
+                    render: {
+                        mode: 'embedded',
+                        target: document.getElementById('chat-container')
+                    },
+                    autostart: true,
+                    assistant: {
+                        title: "Votre Assistant",
+                        description: "Je suis là pour vous aider.",
+                        image: "https://example.com/path-to-your-image.png",
+                        stylesheet: "https://example.com/path-to-your-stylesheet.css"
+                    }
+                }).then(function(chat) {
+                    if (chat && typeof chat.open === 'function') {
+                        chat.open();
+                    } else {
+                        console.error('Chat object is not defined or does not have an open method.');
+                    }
+                }).catch(function(error) {
+                    console.error('Error loading Voiceflow chat:', error);
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+            v.type = "text/javascript";
+            s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
+</body>
+</html>
