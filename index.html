@@ -37,12 +37,6 @@
                         target: document.getElementById('chat-container')
                     },
                     autostart: true,
-                    assistant: {
-                        title: "Votre Assistant",
-                        description: "Je suis là pour vous aider.",
-                        image: "https://example.com/path-to-your-image.png",
-                        stylesheet: "https://example.com/path-to-your-stylesheet.css"
-                    }
                 }).then(function(chat) {
                     if (chat && typeof chat.open === 'function') {
                         chat.open();
